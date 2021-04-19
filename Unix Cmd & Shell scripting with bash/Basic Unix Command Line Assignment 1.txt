@@ -1,0 +1,376 @@
+Objective:- Assignments will help trainees to understand the basics of unix command and how to explore and use it.
+
+DO NOT copy paste commands from internet, you can take help of the Unix in-built command manual.
+
+Be Honest to yourself!
+
+Important command and option to learn unix commands:-
+man Command
+Example:-
+man ls
+
+--help Option
+Example:-
+ls --help
+
+NOTE:- Always use "man" command before using any unix commands and read about it and its options and how to use it.
+
+Assignments:-
+
+1)List the contents of a directory and their attributes
+Ans:- ls
+Output:- ex1.txt  ex2.txt  ex3.txt  ex4.txt
+
+2)Long list the content with file, directory ownership, permissions,sizes, etc…
+Ans:- ls -l
+Output:- -rw-r--r-- 1 PRIYANKA None   19 Apr 15 17:05 ex1.txt
+-rwxr-xr-x 1 PRIYANKA None   82 Apr 15 17:05 ex2.txt
+-rwxr-xr-x 1 PRIYANKA None 1811 Apr 15 17:06 ex3.txt
+-rwxr-xr-x 1 PRIYANKA None 1014 Apr 15 17:07 ex4.txt
+
+3)Display the size of the file in human readable format
+Ans:- ls -sh
+Output:- total 10K
+1.0K ex1.txt  1.0K ex2.txt  4.0K ex3.txt  4.0K ex4.txt
+
+4)Show all files and folders including hidden one
+Ans:- ls -a
+Output:-.  ..  ex1.txt  ex2.txt  ex3.txt  ex4.txt
+
+5)list directories recursively
+Ans:- ls -R
+Output:- .:
+ex1.txt  ex2.txt  ex3.txt  ex4.txt
+
+6)Sort the files by size with largest at the top
+Ans:- ls -S
+Output:- ex3.txt  ex4.txt  ex2.txt  ex1.txt
+
+7)Sort the files by last time modified displaying the newest first.
+Ans:- ls -l -t
+Output:- total 10
+-rwxr-xr-x 1 PRIYANKA None 1014 Apr 15 17:07 ex4.txt
+-rwxr-xr-x 1 PRIYANKA None 1811 Apr 15 17:06 ex3.txt
+-rwxr-xr-x 1 PRIYANKA None   82 Apr 15 17:05 ex2.txt
+-rw-r--r-- 1 PRIYANKA None   19 Apr 15 17:05 ex1.txt
+
+8)Diplay the location of a program/command, where it is installed.
+Ans:- locate command will give long listing of files.
+      which command gives the path & whereis command gives the location if it is in our path variable.
+
+9)Which command is used to switch directory from one to another
+Ans:- cd example
+Output:- PRIYANKA@DESKTOP-ECGHQ7H ~/assignment/example
+
+10)List all the environment variables set for the current shell environment
+Ans:- printenv
+Output:- SHELL=/bin/bash
+WSL_DISTRO_NAME=Ubuntu
+NAME=DESKTOP-ECGHQ7H
+PWD=/home/priyanka
+LOGNAME=priyanka
+MOTD_SHOWN=update-motd
+HOME=/home/priyanka
+LANG=C.UTF-8
+
+11)Did you notice something in the output of "env" command?
+Ans:- env command keeps track of its own shell and environment variables.
+
+12)Which command is used to print the text or any variables value in the Console/Terminal?
+Ans:- echo "Hello this is shell scripting example"
+Output:- priyanka@DESKTOP-ECGHQ7H:~$ echo "Hello this is shell scripting example"
+Hello this is shell scripting example
+
+13)Print the value of the env variable "PATH" on the console
+Ans:- printenv PATH
+
+14)Is linux a case-sensitive operating system?
+Ans:- Yes, linux is a case-sensitive operating system.
+
+15)Is, "Ls" same as "ls"?
+Ans:- No, "ls" gives list of content in directory while "Ls" gives error like "command not found".
+Output:- priyanka@DESKTOP-ECGHQ7H:~$ ls
+assignments
+priyanka@DESKTOP-ECGHQ7H:~$ Ls
+Ls: command not found
+
+16)Display your currently logged in user
+Ans:- whoami
+Output:- priyanka
+
+17)how do you change the currrently logged in user to another user?
+Ans:- su - other_user
+
+18)Which command is used to leave a shell environment that you are currently logged in to?
+Ans:- exit command is used.
+
+19)How do you reboot the system?
+Ans:- $sudo reboot and $sudo shutdown -r now these commands are used for rebooting the system.
+
+20)How do you shutdown the system?
+Ans:- sudo shutdown command is used to shutdown the system.
+
+21)Display all the major running processes in the system
+Ans:- ps -A
+Output:-  PID TTY          TIME CMD
+    1 ?        00:00:00 init
+   45 tty1     00:00:00 init
+   46 tty1     00:00:00 bash
+  147 tty1     00:00:00 ps
+
+22)Understand the output of command used in above question of displaying processes, explain the meaning of each column and what data it displays?
+Ans:- PID is a process id which is essential to kill or control the process on linux. TTY is the terminal name.
+TIME is the running time of process & CMD is the name of command that launches the process.
+
+23)Display the name of the system kernel
+Ans:- uname -srm
+Output:- Linux 4.4.0-18362-Microsoft x86_64
+
+24)display the kernel release number
+Ans:- uname -r
+Ouput:- 4.4.0-18362-Microsoft
+
+25)display the machine type of the current kernel
+Ans:- uname -m
+Output:- x86_64
+
+26)Display the name of the operating system that the kernel is running on
+Ans:- uname -o
+Output:- GNU/Linux
+
+27)Display all info that uname command can show.
+Ans:- uname -a
+Output:- Linux DESKTOP-ECGHQ7H 4.4.0-18362-Microsoft #1049-Microsoft Thu Aug 14 12:01:00 PST 2020 x86_64 x86_64 x86_64 GNU/Linux
+
+28)Display the name of directory that you are currently pointing to
+Ans:- pwd
+Output:- /home/priyanka/assignments
+
+29)change the current directory to another directory that you have in your system.
+Ans:- cd demo1
+Output:- priyanka@DESKTOP-ECGHQ7H:~/assignments/demo1$
+
+30)Go up one directory
+Ans:- cd demo2
+Output:- priyanka@DESKTOP-ECGHQ7H:~/assignments/demo1/demo2$
+
+31)Return to last directory
+Ans:- cd ../..
+
+32)change the current directory to home(logged in user's) directory
+Ans:- cd home/
+Output:- priyanka@DESKTOP-ECGHQ7H:/home$
+
+33)How to check all the command used from the prompt (Command History)
+Ans:- history command shows all the commands we used so far in prompt.
+
+34)In which file the history of commands are stored in?
+Ans:- The bash_history file contains all the history of commands.
+
+35)How many lines of history does the system keep and from where you can change it?
+Ans:- Around 1000 lines of history the system keep & we can change it by editing the .bashrc file add HISTSIZE=500 & HISTFILESIZE=500 in that file.
+
+36)How can you modify bash's history behaviour
+Ans:- Wa can add the changes we want to add in the .bashrc file to change the bash behaviour.
+
+37)Display all the commands entered so far, now, try to run a particular command from the history list without typing that command.
+Ans:- history command shows list of all the commands we run so far and to to run command from history without typing the command press ctrl+R then enter.
+
+NOTE:- TAB key is your friend when it comes to command completion and having long file and directory names autocompleted at the bash prompt for you. JUST BE LAZY AND USE TAB KEY FOR AUTO COMPLETION ;-)
+
+38)What are the different types of shell and where are they used and how do we use them?
+Ans:-Types of shell are:- 
+     1)The C Shell (csh) : It incorporated features such as aliases and command history.It includes helpful programming features like built-in arithmetic and C-like expression syntax.
+     2)The Bourne Shell (sh) : This shell is the original UNIX shell. It lacks features for interactive use like the ability to recall previous commands as well as built-in arithmetic and logical expression handling. This shell is faster and more preferred.
+     3)Korn Shell (ksh) : It is superset of the Bourne Shell, So this shell supports everything in the Bourne Shell. It is faster than C shell.It includes features like built-in arithmetic and C-like arrays, functions, and string-manipulation facilities.
+     4)Bourne Again Shell (bash) :It is compatible to the Bourne shell. It includes features from Korn and Bourne shell.
+	
+39)What is the difference between login shell and non-login shell?
+Ans:-login shell- is created after a successful login of user. If the output is name of our shell prepended by - then it is a login shell. 
+     Non-login shell is started by a program without a login.
+
+40)How do we start login shell and non-login shell?
+Ans:- Login shell - priyanka@DESKTOP-ECGHQ7H:~$ echo $0
+	          -bash 
+      Non login shell - echo $0
+	              bash
+
+41)What happens when you start a login shell (which files are read and used and Why)?
+Ans:-   Login shell executes /tec/profile file  which stores system-wide environment configurations and startup programs for login setup,
+	/etc/profile executes all the scripts in /etc/profile.d/  which stores shell scripts used to make custom changes to environment 
+	then executes users ~/.bash_profile
+	~/.bash_profile executes users ~/.bashrc  which stores user specific aliases and functions 
+	~/.bashrc executes /etc/bashrc  which contains system-wide functions and aliases including other configurations that apply to all system users 
+
+
+42)What happens when you start a non-login shell (Which files are read and used and Why)?
+Ans:- Non-login shell first executes "~/.bashrc"  which stores user specific aliases and functions
+	then ~/.bashrc executes "/etc/bashrc" which contains system-wide functions and aliases including other configurations that apply to all system users
+	/etc/bashrc calls the scripts in "/etc/profile.d/" which stores shell scripts used to make custom changes to environment
+
+43)What are Shell Configuration Files, why do we need it?
+Ans:- Shell configuration files are executed automatically when you log in and out of a shell.
+   There are three configurations files-1).bash_profile 2).bashrc 3).bash_logout
+   1).bash_profile contains initialization commands that set environment variables, a shell's prompt and so on.
+   and executed automatically when a user logs into a shell, along with .bashrc
+   2).bashrc contains commands that configure the shell, define command aliases and set command shell options.
+   3).bash_logout file is executed when the user logs out of a shell which contains cleanup operations and other commands that you want the shell to execute whenever a user logs out of a shell.
+
+44)Explain the Order of file usage from the system/user's home directory when user logs in to the System.
+Ans:- /etc/profile -> /etc/profile.d/ -> ~/.bash_profile -> ~/.bashrc -> etc/bashrc
+
+45)What are Shell Variables, list major shell variables and what do they represent?
+Ans:- It is a special variable that is set by the shell and is required by the shell in order to function correctly.
+	1)Local Variables : A local variable is a variable that is present within the current instance of the shell.
+
+	2)Environment Variables : A environment variable is available system wide and can be used by other applications on the system
+	List of Environment Variables are: 
+		1) USER - Shows User name
+		2) PATH - Shows a sequence of paths on our computer separated by colons
+		3) HOME - Shows default path to the user's home directory
+		4) EDITOR - Shows Path to the program which edits the content of files 
+		5) UID - Shows user's unique ID
+		6) TERM - Shows default terminal emulator
+		7) SHELL - Shows Shell being used by the user
+46)How we see all our env variables?
+Ans:- printenv 
+Output:- SHELL=/bin/bash
+	WSL_DISTRO_NAME=Ubuntu
+	NAME=DESKTOP-ECGHQ7H
+	PWD=/home/priyanka
+	LOGNAME=priyanka
+	MOTD_SHOWN=update-motd
+	HOME=/home/priyanka
+	LANG=C.UTF-8
+47)How we see all env variables in alphabical order?
+Ans:- env | sort
+Output:-HOME=/home/priyanka
+	HOSTTYPE=x86_64
+	LANG=C.UTF-8
+	LESSCLOSE=/usr/bin/lesspipe %s %s
+	LESSOPEN=| /usr/bin/lesspipe %s
+	LOGNAME=priyanka
+	PWD=/home/priyanka
+	SHELL=/bin/bash
+	SHLVL=0
+	TERM=xterm-256color
+	USER=priyanka
+	WSLENV=
+	WSL_DISTRO_NAME=Ubuntu
+	XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+	_=/usr/bin/env
+48)What Format does the env var and its values are stored?
+Ans:- env var values are stored in name value pair.
+49)How do you create your own varible?
+Ans:- priyanka@DESKTOP-ECGHQ7H:~$ name="unix"
+	priyanka@DESKTOP-ECGHQ7H:~$ echo $name
+	unix
+50)How do you start a new bash shell?
+Ans:- Open terminal then type -sudo -s /usr/bin/bash.
+
+51)Difference between Local/Shell variables to Global Variable
+Ans:- Local variables can be used in the same shell & if we load new shell it will ignore all the variables of old shell.
+      Local variables are visible only within the block of code.
+      Global variables are those which we can export from old shell into the new shell.
+      Global variables are available to all shells i.e we can export them into any shell.
+
+52)Making a variable accessible from other the shell in the system.
+Ans:- Global variables allows us to make then accesible from other shell in the system.
+
+53)Show the real life use case of exporting a variable
+Ans:- We can export a variable from parent process to child process like export name[=value]
+      and check export -p
+
+54)Convert the above script file into a command, The file should run with "myappp" instead of "myapp.sh"
+Ans:- Append the path of executable script file to PATH variable in .bash_profile file.
+      write code in script file starting with shebang #!/user/bin/env bash & save the file.
+      Now chcek .bash_profile then run myapp.sh as command.
+
+55)What is Globbing? Explain in depth with examples?
+Ans:- Bash shell feature that is used for matching or expanding specific types of patterns is called as globbing.
+      Globbing is mainly used to match file names or for searching content in files.globbing uses wildcard charecters to create the pattern.
+      Ex:- We want to search those files whose name is four charecter long so by using global we can do this 
+      $ ls -l ????.sh
+      Output:- -rw-r--r-- 1 priyanka priyanka 48 Apr 17 13:44 myapp.sh this is the output of the above command.
+
+56)List all entries with extension ".sh"
+Ans:- ls -l *.sh
+Output:- -rw-r--r-- 1 priyanka priyanka 33 Apr 17 13:56 ex1.sh
+         -rw-r--r-- 1 priyanka priyanka 48 Apr 17 13:44 myapp.sh
+
+57)List all entries with numbers in it.
+Ans:- ls -l [0-9]*
+Output:- -rw-r--r-- 1 priyanka priyanka 17 Apr 17 14:02 8.sh
+
+58)List all entries that starts with a character and ends with a number
+Ans:- ls [a-z]*[0-9]*
+Output:- ex1.sh
+
+59)List all entries that name length more than 5 characters
+Ans:- ls ??????*
+
+60)What is Quoting? and Why do we need it?
+Ans:- Quoting is used when we want to stop termination of word having special meaning.
+      Single quote= all the charecters between this quote losses their special meaning.
+      Double quote= most charecters between this quote losses their special meaning.
+      Backslash= any charecter immediatly follwed by this losses its special meaning.
+      Back quote= anything in between backquote would be treated as command & treated as executed.
+
+61)Write few(minimum 3) unique examples that shows, how a particular problem is solved using Quoting.
+Ans:- 1) priyanka@DESKTOP-ECGHQ7H:~/assignments$ echo Hello World :)
+	-bash: syntax error near unexpected token `)'
+	priyanka@DESKTOP-ECGHQ7H:~/assignments$ echo Hello World :\)
+	Hello World :)
+
+      2) priyanka@DESKTOP-ECGHQ7H:~/assignments$ echo "Quotation"
+	Quotation
+	priyanka@DESKTOP-ECGHQ7H:~/assignments$ echo \"Quotation\"
+	"Quotation"
+
+      3) priyanka@DESKTOP-ECGHQ7H:~/assignments$ echo hello;everyone
+	hello
+	everyone: command not found
+	priyanka@DESKTOP-ECGHQ7H:~/assignments$ echo hello\;everyone
+	hello;everyone
+	
+62)How do you find a particular files/directories based on a particular search criteria?
+HINT:- look for commands -> locate, find and whereis
+Ans:- priyanka@DESKTOP-ECGHQ7H:~$ find ./assignments -name ex1.sh
+Output:- ./assignments/ex1.sh
+
+63)Write major difference between locate, find and whereis?
+Ans:- Find is used when we want to search by perticular criteria in a directory.
+      Locate is used when we dont know the exact location of file where it is & it performs search in "mlocate.db".
+      Whereis returns the location of the executable like absolute path of the binary.
+
+64)How Globbing is different from locate, find and whereis?
+Ans:- Globbing can be used within the locate , find and whereis command to make searching better.
+
+65)Explain the Linux File System.
+Ans:- Linux file system is structured collection of files on disk or partition.A partition is a container for information
+      and can span an entire hard drive if desired. 
+      Linux file system contains the following sections:-
+	-The root directory
+	-A specific data storage format
+	-A partition or logical volume having a perticular file system.
+
+66)Explain absolute and Relative Paths
+Ans:- Absolute Path:- It is defined as the specifying the location of a file or directory from the root derectory.
+      Relative Path:- It is defined as the path related to the present working directly(pwd).
+
+67)What are the different ways of creating a File in linux System? Write an example of each and the difference between them.
+Ans:- 1) priyanka@DESKTOP-ECGHQ7H:~$ touch file1.txt
+      2) priyanka@DESKTOP-ECGHQ7H:~$ cat > file2.txt
+      3) priyanka@DESKTOP-ECGHQ7H:~$ vi file3.txt
+      4) priyanka@DESKTOP-ECGHQ7H:~$ echo "This is demo file" > file4.txt
+
+68)In how many ways we can delete the files from linux system? write an example of each and teh difference between them.
+Ans:- 1)priyanka@DESKTOP-ECGHQ7H:~$ rm file1.txt  deletes single file
+      2)priyanka@DESKTOP-ECGHQ7H:~$ rm file2.txt file3.txt deletes multiple files
+      3)priyanka@DESKTOP-ECGHQ7H:~$ rm * deletes all files
+69)Archiving files using linux command, write a command to archive set of files from linux commands.
+Ans:- priyanka@DESKTOP-ECGHQ7H:~/assignments$ tar cf archive.tar ex1.sh myapp.sh 8.sh
+      priyanka@DESKTOP-ECGHQ7H:~/assignments$ ls
+      8.sh  archive.tar  demo1  ex1.sh  myapp.sh
+70)Extract the archived files from the above step.
+Ans:- priyanka@DESKTOP-ECGHQ7H:~/assignments$ tar xf archive.tar
