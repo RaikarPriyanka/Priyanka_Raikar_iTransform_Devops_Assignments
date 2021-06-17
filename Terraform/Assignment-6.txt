@@ -33,8 +33,8 @@ Answer
 
 1) main.tf file
 // provider "aws" {
-  access_key = "AKIAVNB5M4WIWME56GEN"
-  secret_key = "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"
+  access_key = ""
+  secret_key = ""
   region = "${var.aws_region}"
 }
 
