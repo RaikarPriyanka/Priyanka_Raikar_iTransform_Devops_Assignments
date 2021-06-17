@@ -1,1 +1,1 @@
-This is readme file.
+This is folder contains Terraform Assignment.

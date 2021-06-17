@@ -1,0 +1,117 @@
+Create the variables file (variables.tf) and add four variables with these default values:
+	1. container_name: mysql.
+	2. mysql_root_password: P4sSw0rd0!.
+	3. mysql_network_name: mysql_internal_network.
+	4. mysql_volume_name: mysql_data.
+
+Create the images file (images.tf)
+	1. Add the docker_image resource and call it mysql_image.
+	2. Set the name to mysql:5.7.
+
+Create the networks file (networks.tf):-
+	1. Add the docker_network resource and call it private_bridge_network.
+	2. Set the name to use the mysql_network_name variable.
+	3. Set the driver to bridge.
+	4. Set internal to true.
+
+Create the volumes file (volume.tf):-
+	1. In volumes.tf add the docker_volume resource and call it mysql_data_volume.
+	2. Set the name to use the mysql_volume_name variable.
+
+Create the main file (main.tf):-
+	1. In main.tf add the docker_container resource and call it mysql_container.
+	2. Set the name to use the container_name variable.
+	3. Set the image to use the name of the image coming from docker_image.
+	4. Create an environment variable for MYSQL_ROOT_PASSWORD and set it to the mysql_root_password variable.
+	5. Configure the container volume to use the volume created by docker_volume, and make sure the container_path is set to /var/lib/mysql.
+	7. The container needs to use the network created by docker_network.
+
+Deploy the infrastructure
+	1. Initialize Terraform.
+	2. Validate the files.
+	3. Generate a Terraform plan.
+	4. Deploy the infrastructure using the plan file.
+
+Answer
+
+1) touch variables.tf images.tf networks.tf volume.tf main.tf
+
+//variable.tf
+variable "container_name" {
+        default = "mysql"
+}
+
+variable "mysql_root_password" {
+        default = "P4sSw0rd0!"
+}
+
+variable "mysql_network_name" {
+        default = "mysql_internal_network"
+}
+
+variable "mysql_volume_name" {
+        default = "mysql_data"
+}
+
+//images.tf
+resource "docker_image" "mysql_image" {
+        name = "mysql:5.7"
+}
+
+//volumes.tf
+resource "docker_volume" "mysql_data_volume" {
+        name = "mysql_data"
+}
+
+//networks.tf
+resource "docker_network" "private_bridge_network" {
+        name = "ghost_mysql_internal"
+        driver = "bridge"
+        internal = true
+}
+
+//main.tf
+terraform {
+        required_providers {
+                docker = {
+                        source = "kreuzwerker/docker"
+                        version = "2.12.0"
+                }
+        }
+}
+
+provider "docker" {
+        host = "npipe:////.//pipe//docker_engine"
+}
+
+resource "docker_container" "mysql_container" {
+        name  = "ghost_database"
+        image = "${docker_image.mysql_image.name}"
+        env   = [
+                "MYSQL_ROOT_PASSWORD=${var.mysql_root_password}"
+                ]
+        volumes {
+                volume_name    = "${docker_volume.mysql_data_volume.name}"
+                container_path = "/var/lib/mysql"
+        }
+        networks_advanced {
+                name    = "${docker_network.private_bridge_network.name}"
+                aliases = ["${var.mysql_network_name}"]
+        }
+}
+
+2) terraform init
+//Terraform has been successfully initialized!
+
+3) terraform validate
+//Success! The configuration is valid.
+
+4) terraform plan -out tfplan
+
+5) terraform apply tfplan
+//Apply complete! Resources: 4 added, 0 changed, 0 destroyed.
+
+
+
+
+	

@@ -1,0 +1,133 @@
+Adding Maps and Lookups in your Terraform files
+The lab files can be found @ https://github.com/satyensingh/terraform-assignment-resources.git
+In the repo you will find main.tf, outputs.tf, and variables.tf.
+Add a new variable called env. Set a description to “env: dev or prod”.
+Convert the type from image_name to map.
+
+Change the default to use key/value pairs. Set dev to ghost:latest and prod to ghost:alpine.
+
+Convert container_name to a map. Change the default to use key/value pairs. Set dev to blog_dev and prod to blog_prod.
+
+Convert ext_port to a map. Change the default to use key/value pairs. Set dev to 8080 and prod to 80.
+
+Now initialize Terraform.
+
+Setup the Development environment
+Create a workspace called dev.
+Generate a Terraform plan. Output the plan and call it tfdev_plan. Pass in a variable called env and set it to dev.
+Apply tfdev_plan.
+
+Setup the Production environment
+Create a workspace called prod.
+Generate a Terraform plan. Output the plan and call it tfprod_plan. Pass in a variable called env and set it to prod.
+Apply tfprod_plan.
+
+Verify both environments work
+Open a browser and navigate to the public IP. This should pull up the production environment.
+Open a browser tab and navigate to the public IP on port 8080. This should pull up the development environment.
+
+Answer
+
+1) main.tf file
+terraform {
+        required_providers {
+        docker = {
+                source = "kreuzwerker/docker"
+                version = "2.12.0"
+                }
+        }
+}
+
+provider "docker" {
+        host = "npipe:////.//pipe//docker_engine"
+}
+
+
+# Download the latest Ghost Image
+resource "docker_image" "image_id" {
+  name = "${lookup(var.image_name, var.env)}"
+}
+
+# Start the Container
+resource "docker_container" "container_id" {
+  name  = "${lookup(var.container_name, var.env)}"
+  image = "${docker_image.image_id.latest}"
+  ports {
+    internal = "2368"
+    external = "${lookup(var.ext_port, var.env)}"
+  }
+}
+
+//variables.tf file
+
+#Define variables
+variable "env" {
+  description = "env: dev or prod"
+}
+
+variable "image_name" {
+  description = "Image for container."
+  type = map(string)
+  default     = {
+    dev  = "ghost:latest"
+    prod = "ghost:alpine"
+  }
+}
+
+variable "container_name" {
+  description = "Name of the container."
+  type = map(string)
+  default     = {
+    dev  = "blog_dev"
+    prod = "blog_prod"
+  }
+}
+
+variable "ext_port" {
+  description = "External port for container."
+  type = map(string)
+  default     = {
+    dev  = "8081"
+    prod = "80"
+  }
+}
+
+
+
+2) terraform init
+//Terraform has been successfully initialized!
+
+3) terraform workspace new dev
+//Created and switched to workspace "dev"!
+
+4)  terraform plan -out=tfdev_plan -var env=dev
+
+5) terraform apply tfdev_plan
+docker_image.image_id: Creating...
+docker_image.image_id: Creation complete after 0s [id=sha256:c908524b592085e0095db3208cef17112d13eb6c5a56d870b576c79fa26e6032ghost:latest]
+docker_container.container_id: Creating...
+docker_container.container_id: Creation complete after 7s [id=0c3d60f9760b10fa154cf2d9680c62b248529e9e1a1e18fed9ccf8a159898c51]
+
+Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+container_name = "blog_dev"
+ip_address = "172.17.0.3"
+
+6) terraform workspace new prod
+//Created and switched to workspace "prod"!
+
+7) terraform plan -out=tfprod_plan -var env=prod
+
+8) terraform apply tfprod_plan
+//docker_container.container_id: Creating...
+docker_container.container_id: Creation complete after 8s [id=800a655e6c461dd8a10ce84d9576a41a7f399447ac71253d940b7f8ed9f1e4e8]
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+container_name = "blog_prod"
+ip_address = "172.17.0.2"
+
