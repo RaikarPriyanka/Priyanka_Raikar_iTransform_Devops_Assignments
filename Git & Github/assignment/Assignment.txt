@@ -1,0 +1,407 @@
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~
+$ mkdir project_dir
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~
+$ cd project_dir
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir
+$ git init
+Initialized empty Git repository in C:/Users/PRIYANKA/project_dir/.git/
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ nano index.html
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        index.html
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git add index.html
+warning: LF will be replaced by CRLF in index.html.
+The file will have its original line endings in your working directory
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git commit -m "commiting index.html"
+[master (root-commit) bc23abf] commiting index.html
+ 1 file changed, 1 insertion(+)
+ create mode 100644 index.html
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ nano index.html
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ nano info.txt
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   index.html
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        info.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ nano .gitignore
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   index.html
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .gitignore
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git add .gitignore
+warning: LF will be replaced by CRLF in .gitignore.
+The file will have its original line endings in your working directory
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git commit -m "ingored file created"
+[master 4a6adda] ingored file created
+ 1 file changed, 1 insertion(+)
+ create mode 100644 .gitignore
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   index.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git add index.html
+warning: LF will be replaced by CRLF in index.html.
+The file will have its original line endings in your working directory
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git commit -m "updated index file"
+[master d9f1803] updated index file
+ 1 file changed, 1 insertion(+)
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git log
+commit d9f1803733af4f1337baf500d36997b083bb6554 (HEAD -> master)
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 11:13:37 2021 +0530
+
+    updated index file
+
+commit 4a6adda978345747c106e2370ddb42a10f895082
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 11:11:20 2021 +0530
+
+    ingored file created
+
+commit bc23abf0f342c73ef9a133577892a9b551a04783
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 10:52:13 2021 +0530
+
+    commiting index.html
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ nano index.html
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git revert head
+error: Your local changes to the following files would be overwritten by merge:
+        index.html
+Please commit your changes or stash them before you merge.
+Aborting
+fatal: revert failed
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git revert d9f1803733af4f1337baf500d36997b083bb6554
+error: Your local changes to the following files would be overwritten by merge:
+        index.html
+Please commit your changes or stash them before you merge.
+Aborting
+fatal: revert failed
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   index.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git add index.html
+warning: LF will be replaced by CRLF in index.html.
+The file will have its original line endings in your working directory
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git commit -m "new file index.html is edited"
+[master 6e96bea] new file index.html is edited
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git log
+commit 6e96bea28f82dc835a3701628629dd7b369afbce (HEAD -> master)
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 12:12:57 2021 +0530
+
+    new file index.html is edited
+
+commit d9f1803733af4f1337baf500d36997b083bb6554
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 11:13:37 2021 +0530
+
+    updated index file
+
+commit 4a6adda978345747c106e2370ddb42a10f895082
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 11:11:20 2021 +0530
+
+    ingored file created
+
+commit bc23abf0f342c73ef9a133577892a9b551a04783
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 10:52:13 2021 +0530
+
+    commiting index.html
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git revert 6e96bea28f82dc835a3701628629dd7b369afbce
+[master 10769fb] Revert "new file index.html is edited" changes made in index.html to check revert This reverts commit 6e96bea28f82dc835a3701628629dd7b369afbce.
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ nano index.html
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git add index.html
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git log
+commit 10769fbb5d599f75f09dc9de148fe74d8f1d2884 (HEAD -> master)
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 12:14:03 2021 +0530
+
+    Revert "new file index.html is edited"
+    changes made in index.html to check revert
+    This reverts commit 6e96bea28f82dc835a3701628629dd7b369afbce.
+
+commit 6e96bea28f82dc835a3701628629dd7b369afbce
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 12:12:57 2021 +0530
+
+    new file index.html is edited
+
+commit d9f1803733af4f1337baf500d36997b083bb6554
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 11:13:37 2021 +0530
+
+    updated index file
+
+commit 4a6adda978345747c106e2370ddb42a10f895082
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 11:11:20 2021 +0530
+
+    ingored file created
+
+commit bc23abf0f342c73ef9a133577892a9b551a04783
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 10:52:13 2021 +0530
+
+    commiting index.html
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git commit -m "commiting the latest changes"
+[master 69b2b26] commiting the latest changes
+ 1 file changed, 1 insertion(+)
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git log
+commit 69b2b26e405b38bf1203242a1c8755b7f9cd4a4e (HEAD -> master)
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 12:19:30 2021 +0530
+
+    commiting the latest changes
+
+commit 10769fbb5d599f75f09dc9de148fe74d8f1d2884
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 12:14:03 2021 +0530
+
+    Revert "new file index.html is edited"
+    changes made in index.html to check revert
+    This reverts commit 6e96bea28f82dc835a3701628629dd7b369afbce.
+
+commit 6e96bea28f82dc835a3701628629dd7b369afbce
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 12:12:57 2021 +0530
+
+    new file index.html is edited
+
+commit d9f1803733af4f1337baf500d36997b083bb6554
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 11:13:37 2021 +0530
+
+    updated index file
+
+commit 4a6adda978345747c106e2370ddb42a10f895082
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 11:11:20 2021 +0530
+
+    ingored file created
+
+commit bc23abf0f342c73ef9a133577892a9b551a04783
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 10:52:13 2021 +0530
+
+    commiting index.html
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git revert  69b2b26e405b38bf1203242a1c8755b7f9cd4a4e
+[master dd0172f] Revert "commiting the latest changes" Again changing the file This reverts commit 69b2b26e405b38bf1203242a1c8755b7f9cd4a4e.
+ 1 file changed, 1 deletion(-)
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ alias my-add='git add'
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ my-add index.html
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git commit -m "changed index.html"
+On branch master
+nothing to commit, working tree clean
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git log
+commit dd0172f3652d162ab81fd5520d1427314bb262b9 (HEAD -> master)
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 12:20:01 2021 +0530
+
+    Revert "commiting the latest changes"
+    Again changing the file
+    This reverts commit 69b2b26e405b38bf1203242a1c8755b7f9cd4a4e.
+
+commit 69b2b26e405b38bf1203242a1c8755b7f9cd4a4e
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 12:19:30 2021 +0530
+
+    commiting the latest changes
+
+commit 10769fbb5d599f75f09dc9de148fe74d8f1d2884
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 12:14:03 2021 +0530
+
+    Revert "new file index.html is edited"
+    changes made in index.html to check revert
+    This reverts commit 6e96bea28f82dc835a3701628629dd7b369afbce.
+
+commit 6e96bea28f82dc835a3701628629dd7b369afbce
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 12:12:57 2021 +0530
+
+    new file index.html is edited
+
+commit d9f1803733af4f1337baf500d36997b083bb6554
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 11:13:37 2021 +0530
+
+    updated index file
+
+commit 4a6adda978345747c106e2370ddb42a10f895082
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 11:11:20 2021 +0530
+
+    ingored file created
+
+commit bc23abf0f342c73ef9a133577892a9b551a04783
+Author: unknown <priyankaraikar33gmail.com>
+Date:   Sun Apr 11 10:52:13 2021 +0530
+
+    commiting index.html
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git revert dd0172f3652d162ab81fd5520d1427314bb262b9
+[master b4587e9] Revert "Revert "commiting the latest changes"" Reverting the last commit This reverts commit dd0172f3652d162ab81fd5520d1427314bb262b9.
+ 1 file changed, 1 insertion(+)
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git remote add origin https://github.com/RaikarPriyanka/Assignments.git
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git push origin master
+To https://github.com/RaikarPriyanka/Assignments.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/RaikarPriyanka/Assignments.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git remote add origin https://github.com/RaikarPriyanka/Demo_Assignment.git
+error: remote origin already exists.
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git remote add origin https://github.com/RaikarPriyanka/Demo_Assignment.git
+error: remote origin already exists.
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ ^C
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git remote remove origin
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git remote add origin https://github.com/RaikarPriyanka/Demo_Assignment.git
+
+PRIYANKA@DESKTOP-ECGHQ7H MINGW64 ~/project_dir (master)
+$ git push origin master
+Enumerating objects: 18, done.
+Counting objects: 100% (18/18), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (14/14), done.
+Writing objects: 100% (18/18), 1.80 KiB | 97.00 KiB/s, done.
+Total 18 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (3/3), done.
+To https://github.com/RaikarPriyanka/Demo_Assignment.git
+ * [new branch]      master -> master
+
+
